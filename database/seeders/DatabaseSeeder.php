@@ -16,13 +16,15 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // ─── Admin User ──────────────────────────────────────────────────────
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@livetv.com',
-            'phone' => '9876543210',
-            'password' => Hash::make('password'),
-            'role' => 'admin',
-            'status' => true,
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@livetv.com'],
+            [
+                'name' => 'Admin',
+                'phone' => '9876543210',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'status' => true,
+            ]
+        );
     }
 }
